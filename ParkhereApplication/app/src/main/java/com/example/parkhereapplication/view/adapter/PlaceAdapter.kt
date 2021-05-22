@@ -11,6 +11,11 @@ import com.example.parkhereapplication.model.Place
 
 class PlaceAdapter : RecyclerView.Adapter<PlaceAdapter.PlaceViewHolder>(){
     private val mData = ArrayList<Place>()
+    private lateinit var onItemClick: OnItemClickCallback
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClick = onItemClickCallback
+    }
 
     fun setData(items: ArrayList<Place>) {
         mData.clear()
@@ -41,7 +46,13 @@ class PlaceAdapter : RecyclerView.Adapter<PlaceAdapter.PlaceViewHolder>(){
                 binding.tvName.text = place.name
                 binding.tvLocationAddress.text = place.locationAddress
                 binding.tvCapacity.text = StringBuilder("Capacity: ${place.capacity.toString()}")
+
+                itemView.setOnClickListener { onItemClick.onItemClicked(place) }
             }
         }
+    }
+
+    interface OnItemClickCallback {
+        fun onItemClicked(data: Place)
     }
 }

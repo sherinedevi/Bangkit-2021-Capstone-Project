@@ -15,32 +15,35 @@ class HomeViewModel : ViewModel() {
         val placeOne = Place (
             name = "Malioboro Wilayah Utara",
             description = "Wilayah tujuan turis di Yogyakarta",
-            image = R.drawable.parking_image,
+            image = R.drawable.parking_image_1,
             capacity = 15,
             available = 5,
             locationAddress = "Jalan Malioboro",
             url = "Something")
 
         val placeTwo = Place(
-            name = "Malioboro Wilayah Utara",
+            name = "Ambarukmo Plaza",
             description = "Wilayah tujuan turis di Yogyakarta",
-            image = R.drawable.parking_image,
+            image = R.drawable.parking_image_2,
             capacity = 15,
             available = 5,
-            locationAddress = "Jalan Malioboro",
+            locationAddress = "Jalan Juanda",
             url = "Something")
 
         val placeThree = Place(
-            name = "Malioboro Wilayah Utara",
+            name = "Stasiun Yogyakarta",
             description = "Wilayah tujuan turis di Yogyakarta",
-            image = R.drawable.parking_image,
+            image = R.drawable.parking_image_3,
             capacity = 15,
             available = 5,
-            locationAddress = "Jalan Malioboro",
+            locationAddress = "Jalan Margo Utomo",
             url = "Something")
 
         listItems.add(placeOne)
         listItems.add(placeTwo)
+        listItems.add(placeThree)
+        listItems.add(placeThree)
+        listItems.add(placeThree)
         listItems.add(placeThree)
 
         listPlaces.postValue(listItems)

@@ -7,14 +7,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.parkhereapplication.R
 import com.example.parkhereapplication.databinding.ActivityMainBinding
 import com.example.parkhereapplication.databinding.FragmentHomeBinding
+import com.example.parkhereapplication.model.Place
 import com.example.parkhereapplication.view.adapter.PlaceAdapter
 import com.example.parkhereapplication.viewmodel.HomeViewModel
 
 class HomeFragment : Fragment() {
+    companion object {
+        const val EXTRA_USER = "extra_user"
+    }
+
     private lateinit var adapter: PlaceAdapter
     private lateinit var binding: FragmentHomeBinding
     private lateinit var homeViewModel: HomeViewModel
@@ -32,6 +38,11 @@ class HomeFragment : Fragment() {
         binding = FragmentHomeBinding.bind(view)
 
         showRecyclerView()
+        homeViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(HomeViewModel::class.java)
+        homeViewModel.setPlace()
+        homeViewModel.getPlaces().observe(viewLifecycleOwner, { placeItems ->
+            adapter.setData(placeItems)
+        })
     }
 
     private fun showRecyclerView() {
@@ -41,10 +52,14 @@ class HomeFragment : Fragment() {
         binding.rvPlace.adapter = adapter
         binding.rvPlace.setHasFixedSize(true)
 
-        homeViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(HomeViewModel::class.java)
-        homeViewModel.setPlace()
-        homeViewModel.getPlaces().observe(viewLifecycleOwner, { placeItems ->
-            adapter.setData(placeItems)
+        adapter.setOnItemClickCallback(object : PlaceAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: Place) {
+                val mBundle = Bundle()
+                mBundle.putParcelable(EXTRA_USER, data)
+                NavHostFragment
+                    .findNavController(this@HomeFragment)
+                    .navigate(R.id.action_homeFragment_to_detailFragment, mBundle)
+            }
         })
     }
 }
