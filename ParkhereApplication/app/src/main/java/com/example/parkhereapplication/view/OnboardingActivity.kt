@@ -12,38 +12,39 @@ class OnboardingActivity : AppIntro() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setImmersiveMode()
+        supportActionBar?.hide()
 
         addSlide(AppIntroFragment.newInstance(
-                title = "Sistem Parkir Cerdas",
-                description = "Mempermudah sistem parkir di indonesia dengan memanfaatkan sistem parkir yang cerdas, efektif dan efesien. ",
-                titleColor = getColor(R.color.orange_primary),
-                descriptionColor = Color.BLACK,
-                backgroundColor = Color.WHITE,
-                titleTypefaceFontRes = R.font.montserrat_bold,
-                descriptionTypefaceFontRes = R.font.montserrat_medium,
-                imageDrawable = R.drawable.parkhere_illustration_1
+            title = "Sistem Parkir Cerdas",
+            description = "Mempermudah sistem parkir di indonesia dengan memanfaatkan sistem parkir yang cerdas, efektif dan efesien. ",
+            titleColor = getColor(R.color.orange_primary),
+            descriptionColor = Color.BLACK,
+            backgroundColor = Color.WHITE,
+            titleTypefaceFontRes = R.font.montserrat_bold,
+            descriptionTypefaceFontRes = R.font.montserrat_medium,
+            imageDrawable = R.drawable.parkhere_illustration_1
         ))
 
         addSlide(AppIntroFragment.newInstance(
-                title = "Akses dari Mana Saja",
-                description = "Sistem parkir yang berguna untuk melihat jumlah kosong dan terisi dengan menggunakan CCTV yang dapat diakses dimana saja.",
-                titleColor = getColor(R.color.orange_primary),
-                descriptionColor = Color.BLACK,
-                backgroundColor = Color.WHITE,
-                titleTypefaceFontRes = R.font.montserrat_bold,
-                descriptionTypefaceFontRes = R.font.montserrat_medium,
-                imageDrawable = R.drawable.parkhere_illustration_2
+            title = "Akses dari Mana Saja",
+            description = "Sistem parkir yang berguna untuk melihat jumlah kosong dan terisi dengan menggunakan CCTV yang dapat diakses dimana saja.",
+            titleColor = getColor(R.color.orange_primary),
+            descriptionColor = Color.BLACK,
+            backgroundColor = Color.WHITE,
+            titleTypefaceFontRes = R.font.montserrat_bold,
+            descriptionTypefaceFontRes = R.font.montserrat_medium,
+            imageDrawable = R.drawable.parkhere_illustration_2
         ))
 
         addSlide(AppIntroFragment.newInstance(
-                title = "Parkhere",
-                description = "Yuk, mulai meningkatkan operasional perparkiran di Indonesia yang nyaman dan efisien dengan Parkhere.",
-                titleColor = getColor(R.color.orange_primary),
-                descriptionColor = Color.BLACK,
-                backgroundColor = Color.WHITE,
-                titleTypefaceFontRes = R.font.montserrat_bold,
-                imageDrawable = R.drawable.parkhere_illustration_3
+            title = "Parkhere",
+            description = "Yuk, mulai meningkatkan operasional perparkiran di Indonesia yang nyaman dan efisien dengan Parkhere.",
+            titleColor = getColor(R.color.orange_primary),
+            descriptionColor = Color.BLACK,
+            backgroundColor = Color.WHITE,
+            titleTypefaceFontRes = R.font.montserrat_bold,
+            descriptionTypefaceFontRes = R.font.montserrat_medium,
+            imageDrawable = R.drawable.parkhere_illustration_3
         ))
 
         setIndicatorColor(

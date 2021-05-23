@@ -34,7 +34,7 @@
 
             <TextView
                 android:id="@+id/tv_name"
-                style="@style/TextHeading"
+                style="@style/TextView.Heading"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
@@ -43,7 +43,7 @@
 
             <TextView
                 android:id="@+id/tv_location_address"
-                style="@style/TextSub"
+                style="@style/TextView.Subtitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -51,17 +51,6 @@
                 app:drawableStartCompat="@drawable/ic_baseline_location_on_24"
                 app:drawableTint="@color/orange_primary"
                 tools:text="Location" />
-
-            <TextView
-                android:id="@+id/tv_capacity"
-                style="@style/TextSub"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:gravity="center_vertical"
-                app:drawableStartCompat="@drawable/ic_baseline_local_parking_24"
-                app:drawableTint="@color/orange_primary"
-                tools:text="Capacity :" />
         </LinearLayout>
 
         <ImageButton
