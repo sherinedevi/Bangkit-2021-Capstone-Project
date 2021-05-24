@@ -128,7 +128,7 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="300dp"
             android:src="@drawable/cctv_image"
             android:contentDescription="@string/cctv_feed" />
     </LinearLayout>

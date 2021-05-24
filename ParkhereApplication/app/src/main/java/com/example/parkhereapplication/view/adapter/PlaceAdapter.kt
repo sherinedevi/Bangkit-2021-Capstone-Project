@@ -44,7 +44,7 @@ class PlaceAdapter : RecyclerView.Adapter<PlaceAdapter.PlaceViewHolder>(){
                     .load(place.image)
                     .into(binding.ivPlace)
                 binding.tvName.text = place.name
-                binding.tvLocationAddress.text = place.locationAddress
+                binding.tvStreetAddress.text = place.streetAddress
 //                binding.tvCapacity.text = StringBuilder("Capacity: ${place.capacity.toString()}")
 
                 itemView.setOnClickListener { onItemClick.onItemClicked(place) }

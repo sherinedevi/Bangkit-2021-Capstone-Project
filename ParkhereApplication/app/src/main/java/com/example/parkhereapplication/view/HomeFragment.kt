@@ -6,12 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.parkhereapplication.R
-import com.example.parkhereapplication.databinding.ActivityMainBinding
 import com.example.parkhereapplication.databinding.FragmentHomeBinding
 import com.example.parkhereapplication.model.Place
 import com.example.parkhereapplication.view.adapter.PlaceAdapter
@@ -19,7 +17,7 @@ import com.example.parkhereapplication.viewmodel.HomeViewModel
 
 class HomeFragment : Fragment() {
     companion object {
-        const val EXTRA_USER = "extra_user"
+        const val EXTRA_PLACE = "extra_place"
     }
 
     private lateinit var adapter: PlaceAdapter
@@ -63,7 +61,7 @@ class HomeFragment : Fragment() {
         adapter.setOnItemClickCallback(object : PlaceAdapter.OnItemClickCallback {
             override fun onItemClicked(data: Place) {
                 val mBundle = Bundle()
-                mBundle.putParcelable(EXTRA_USER, data)
+                mBundle.putParcelable(EXTRA_PLACE, data)
                 NavHostFragment
                     .findNavController(this@HomeFragment)
                     .navigate(R.id.action_homeFragment_to_detailFragment, mBundle)
