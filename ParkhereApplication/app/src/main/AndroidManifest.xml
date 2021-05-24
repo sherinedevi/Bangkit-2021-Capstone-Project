@@ -9,7 +9,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ParkhereApplication">
-        <activity android:name=".view.DetailPlaceActivity"></activity>
         <activity
             android:name=".view.MainActivity"
             android:label="Parkhere" />

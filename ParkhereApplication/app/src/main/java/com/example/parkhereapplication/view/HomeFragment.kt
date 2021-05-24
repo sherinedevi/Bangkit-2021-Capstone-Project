@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
@@ -37,12 +38,19 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentHomeBinding.bind(view)
 
+        setActionBar()
         showRecyclerView()
         homeViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(HomeViewModel::class.java)
         homeViewModel.setPlace()
         homeViewModel.getPlaces().observe(viewLifecycleOwner, { placeItems ->
             adapter.setData(placeItems)
         })
+    }
+
+    private fun setActionBar() {
+        (activity as AppCompatActivity?)?.supportActionBar?.setHomeButtonEnabled(false)
+        (activity as AppCompatActivity?)?.supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        (activity as AppCompatActivity?)?.supportActionBar?.title = "Parkhere Dashboard"
     }
 
     private fun showRecyclerView() {

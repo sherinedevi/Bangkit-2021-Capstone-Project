@@ -3,4 +3,13 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="details">Details</string>
+    <string name="description">Description</string>
+    <string name="description_example"><![CDATA[Kantor Polresta Provinsi Bandar Lampung melayani laporan & pengaduan masyarakat. Buka 07.00-14.30.]]></string>
+    <string name="name_example">Polresta Lampung Sumatera Selatan</string>
+    <string name="parking_spot_available">Parking Spot Available</string>
+    <string name="example_parking_availability">37</string>
+    <string name="example_address">Jl. Mayjen MT Haryono, Gotong Royong, Kec. Tj. Karang Pusat, Kota Bandar Lampung, Lampung 35119</string>
+    <string name="address">Address</string>
+    <string name="click_to_refresh_image">Click to refresh image</string>
+    <string name="cctv_feed">CCTV_feed</string>
 </resources>
