@@ -1,7 +1,7 @@
 ## Dataset
 [CNRPARK](http://cnrpark.it/): A Dataset for Visual Occupancy Detection of Parking Lots <br>
 
-This project use the [CNR-EXT-Patches-150x150.zip](http://cnrpark.it/dataset/CNR-EXT-Patches-150x150.zip) version (449.5 MB).
+This project use the [CNR-EXT-Patches-150x150.zip](http://cnrpark.it/dataset/CNR-EXT-Patches-150x150.zip) version of the dataset (449.5 MB).
 
 ### Split
 The dataset is split to train and validation with splits defined [here](http://cnrpark.it/dataset/splits.zip), we used:
