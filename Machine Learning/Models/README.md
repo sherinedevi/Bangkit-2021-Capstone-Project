@@ -1,7 +1,7 @@
 # ML Model
 <h3> This directory contains all about our models exploration. </h3>
 <br> We had trained for about 6 models. The training process uses train and validation set, while for the testing process, we apply them on the test set taken from the CNRPark dataset. Here are the results: <br>
-  1. Inception with 91% accuracy on test set <br>
+  1. Inception with 97% accuracy on test set <br>
   2. EfficientNetB3 with 98% accuracy on test set <br>
   3. EfficientNetB4 with 98.8% accuracy on test set <br>
   4. Mobile Net with 95% accuracy on test set <br>
