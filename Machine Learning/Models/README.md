@@ -8,8 +8,7 @@
   5. VGG16 with 98.4% accuracy on test set <br>
   6. Xception with 97.5% accuracy on test set <br>
   7. CNN with 96.9% accuracy on test set <br>
-<br>
-<br> 
+
 ## Saved Model <br>
 Due to GitHub file size limitation, some of the files won't be pushed here, instead we will give the Google Drive link access. <br>
 Saved Model can be accessed through this link: https://drive.google.com/drive/folders/1chNc4iyEDLxls5hnLXQEJA4KquQFc6vi?usp=sharing. All models are in .h5 format. </br>
