@@ -10,9 +10,9 @@
   7. CNN with 96.9% accuracy on test set <br>
 <br>
 <br> 
-## Saved Model
+## Saved Model <br>
 Due to GitHub file size limitation, some of the files won't be pushed here, instead we will give the Google Drive link access. <br>
 Saved Model can be accessed through this link: https://drive.google.com/drive/folders/1chNc4iyEDLxls5hnLXQEJA4KquQFc6vi?usp=sharing. All models are in .h5 format. </br>
 
-## Result on Real Implementation
+## Result on Real Implementation <br>
 Moreover, we applied all our models to the real implementation using Indonesian CCTV footage on a police station's parking lot. The result (can be found [here](https://github.com/sherinedevi/Bangkit-2021-Capstone-Project/tree/main/Machine%20Learning/Models/Result))
