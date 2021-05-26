@@ -5,14 +5,14 @@
   2. EfficientNetB3 with 98% accuracy on test set <br>
   3. EfficientNetB4 with 98.8% accuracy on test set <br>
   4. Mobile Net with 95% accuracy on test set <br>
-  5. VGG16 with 98% accuracy on test set <br>
+  5. VGG16 with 98.4% accuracy on test set <br>
   6. Xception with 97.5% accuracy on test set <br>
   7. CNN with 96.9% accuracy on test set <br>
-However, due to GitHub file size limitation, some of the files won't be pushed here, instead we will give the Google Drive link access.
+<br>
 <br> 
 ## Saved Model
 Due to GitHub file size limitation, some of the files won't be pushed here, instead we will give the Google Drive link access. <br>
 Saved Model can be accessed through this link: https://drive.google.com/drive/folders/1chNc4iyEDLxls5hnLXQEJA4KquQFc6vi?usp=sharing. All models are in .h5 format. </br>
 
 ## Result on Real Implementation
-Moreover, we applied all our models to the real implementation using Indonesian CCTV footage on a police station's parking lot. The result can be seen on the above directory.
+Moreover, we applied all our models to the real implementation using Indonesian CCTV footage on a police station's parking lot. The result (can be found [here](https://github.com/sherinedevi/Bangkit-2021-Capstone-Project/tree/main/Machine%20Learning/Models/Result))
