@@ -12,4 +12,5 @@
     <string name="address">Address</string>
     <string name="click_to_refresh_image">Click to refresh image</string>
     <string name="cctv_feed">CCTV_feed</string>
+    <string name="example_street">Jalan Maguoharjo</string>
 </resources>

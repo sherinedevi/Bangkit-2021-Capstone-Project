@@ -17,6 +17,15 @@
         android:text="@string/name_example" />
 
     <TextView
+        android:id="@+id/tv_street"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TextView.Sub"
+        app:layout_constraintTop_toBottomOf="@id/tv_name"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="@string/example_street" />
+
+    <TextView
         android:id="@+id/tv_sub_title"
         style="@style/TextView.Sub.Title"
         android:layout_width="match_parent"

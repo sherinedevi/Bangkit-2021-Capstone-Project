@@ -1,5 +1,6 @@
 package com.example.parkhereapplication.view.adapter
 
+import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,9 +9,10 @@ import com.bumptech.glide.Glide
 import com.example.parkhereapplication.R
 import com.example.parkhereapplication.databinding.ItemPlaceBinding
 import com.example.parkhereapplication.model.Place
+import kotlin.collections.ArrayList
 
 class PlaceAdapter : RecyclerView.Adapter<PlaceAdapter.PlaceViewHolder>(){
-    private val mData = ArrayList<Place>()
+    private val listPlace = ArrayList<Place>()
     private lateinit var onItemClick: OnItemClickCallback
 
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
@@ -18,8 +20,8 @@ class PlaceAdapter : RecyclerView.Adapter<PlaceAdapter.PlaceViewHolder>(){
     }
 
     fun setData(items: ArrayList<Place>) {
-        mData.clear()
-        mData.addAll(items)
+        listPlace.clear()
+        listPlace.addAll(items)
         notifyDataSetChanged()
     }
 
@@ -29,11 +31,11 @@ class PlaceAdapter : RecyclerView.Adapter<PlaceAdapter.PlaceViewHolder>(){
     }
 
     override fun onBindViewHolder(holder: PlaceViewHolder, position: Int) {
-        holder.bind(mData[position])
+        holder.bind(listPlace[position])
     }
 
     override fun getItemCount(): Int {
-        return mData.size
+        return listPlace.size
     }
 
     inner class PlaceViewHolder(itemView: View) :   RecyclerView.ViewHolder(itemView) {
@@ -41,11 +43,10 @@ class PlaceAdapter : RecyclerView.Adapter<PlaceAdapter.PlaceViewHolder>(){
         fun bind(place: Place) {
             with(itemView) {
                 Glide.with(itemView.context)
-                    .load(place.image)
+                    .load(Base64.decode(place.thumbnail, Base64.DEFAULT))
                     .into(binding.ivPlace)
                 binding.tvName.text = place.name
-                binding.tvStreetAddress.text = place.streetAddress
-//                binding.tvCapacity.text = StringBuilder("Capacity: ${place.capacity.toString()}")
+                binding.tvStreet.text = place.street
 
                 itemView.setOnClickListener { onItemClick.onItemClicked(place) }
             }

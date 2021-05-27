@@ -42,7 +42,7 @@
 
 
             <TextView
-                android:id="@+id/tv_street_address"
+                android:id="@+id/tv_street"
                 style="@style/TextView.Sub"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

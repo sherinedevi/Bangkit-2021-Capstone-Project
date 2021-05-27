@@ -1,6 +1,7 @@
 package com.example.parkhereapplication.view
 
 import android.os.Bundle
+import android.util.Base64
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
@@ -9,11 +10,13 @@ import com.bumptech.glide.Glide
 import com.example.parkhereapplication.R
 import com.example.parkhereapplication.databinding.FragmentDetailBinding
 import com.example.parkhereapplication.model.Place
+import com.example.parkhereapplication.model.PlaceDetail
 import com.example.parkhereapplication.viewmodel.DetailViewModel
 
 class DetailFragment : Fragment() {
     private lateinit var binding: FragmentDetailBinding
     private lateinit var detailViewModel: DetailViewModel
+    private lateinit var place: Place
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -28,10 +31,11 @@ class DetailFragment : Fragment() {
         setActionBar()
         setHasOptionsMenu(true)
 
+        place = arguments?.getParcelable<Place>(HomeFragment.EXTRA_PLACE) as Place
         detailViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(DetailViewModel::class.java)
-        detailViewModel.setPlace(arguments?.getParcelable<Place>(HomeFragment.EXTRA_PLACE) as Place)
-        detailViewModel.getPlace().observe(viewLifecycleOwner, { place ->
-            setData(place)
+        detailViewModel.setPlaceDetail(place.detailUrl!!, requireContext())
+        detailViewModel.getPlaceDetail().observe(viewLifecycleOwner, { placeDetail ->
+            setData(placeDetail)
         })
     }
 
@@ -46,13 +50,14 @@ class DetailFragment : Fragment() {
         (activity as AppCompatActivity?)?.supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
-    private fun setData(place: Place) {
+    private fun setData(placeDetail: PlaceDetail) {
         Glide.with(this@DetailFragment)
-                .load(place.image)
-                .into(binding.ivPlace)
+            .load(Base64.decode(place.thumbnail, Base64.DEFAULT))
+            .into(binding.ivPlace)
         binding.layoutContent.tvName.text = place.name
-        binding.layoutContent.tvAvailablility.text = place.available.toString()
-        binding.layoutContent.tvDescription.text = place.description
-        binding.layoutContent.tvAddress.text = place.address
+        binding.layoutContent.tvStreet.text = place.street
+        binding.layoutContent.tvAvailablility.text = placeDetail.available.toString()
+        binding.layoutContent.tvDescription.text = placeDetail.description
+        binding.layoutContent.tvAddress.text = placeDetail.address
     }
 }

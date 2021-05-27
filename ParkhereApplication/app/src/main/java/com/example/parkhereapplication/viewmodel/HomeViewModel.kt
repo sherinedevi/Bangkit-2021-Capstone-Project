@@ -1,63 +1,82 @@
 package com.example.parkhereapplication.viewmodel
 
+import android.content.Context
+import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.parkhereapplication.R
 import com.example.parkhereapplication.model.Place
+import com.google.gson.Gson
+import com.loopj.android.http.AsyncHttpClient
+import com.loopj.android.http.AsyncHttpResponseHandler
+import cz.msebera.android.httpclient.Header
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import org.json.JSONObject
+import java.lang.Exception
 
 class HomeViewModel : ViewModel() {
+    companion object {
+        private val TAG = HomeViewModel::class.java.simpleName
+    }
+
     private val listPlaces = MutableLiveData<ArrayList<Place>>()
+    private lateinit var errorMessage: String
 
-    fun setPlace() {
+    fun setPlace(context: Context) {
         val listItems = ArrayList<Place>()
+        val url = "https://virtual-ego-312809.et.r.appspot.com/locations"
+        val client = AsyncHttpClient()
 
-        val placeOne = Place (
-                name = "Malioboro Wilayah Utara",
-                description = "Wilayah tujuan turis di Yogyakarta",
-                image = R.drawable.parking_image_1,
-                capacity = 15,
-                available = 5,
-                streetAddress = "Jalan Malioboro",
-                address = "Jl. Mayjen MT Haryono, Gotong Royong, Kec. Tj. Karang Pusat, Kota Bandar Lampung, Lampung 35119",
-                url = "Something")
+        client.get(url, object : AsyncHttpResponseHandler() {
+            override fun onSuccess(
+                    statusCode: Int,
+                    headers: Array<out Header>?,
+                    responseBody: ByteArray?
+            ) {
+                try {
+                    val result = responseBody?.let { String(it) }
+                    val responseObject = JSONObject(result!!)
+                    val list = responseObject.getJSONArray("data")
 
-        val placeTwo = Place(
-                name = "Ambarukmo Plaza",
-                description = "Wilayah tujuan turis di Yogyakarta",
-                image = R.drawable.parking_image_2,
-                capacity = 15,
-                available = 5,
-                streetAddress = "Jalan Juanda",
-                address = "Jl. Mayjen MT Haryono, Gotong Royong, Kec. Tj. Karang Pusat, Kota Bandar Lampung, Lampung 35119",
-                url = "Something")
+                    for (i in 0 until list.length()) {
+                        val item = list.getJSONObject(i)
+                        val detailUrl = item.getString("detail_url")
+                        val name = item.getString("name")
+                        val street = item.getString("street")
+                        val thumbnail = item.getString("thumbnail_base64")
 
-        val placeThree = Place(
-                name = "Stasiun Yogyakarta",
-                description = "Wilayah tujuan turis di Yogyakarta",
-                image = R.drawable.parking_image_3,
-                capacity = 15,
-                available = 5,
-                streetAddress = "Jalan Margo Utomo",
-                address = "Jl. Mayjen MT Haryono, Gotong Royong, Kec. Tj. Karang Pusat, Kota Bandar Lampung, Lampung 35119",
-                url = "Something")
+                        val place = Place(detailUrl, name, street, thumbnail)
+                        listItems.add(place)
+                    }
+                    listPlaces.postValue(listItems)
+                } catch (e: Exception) {
+                    Log.d(TAG, e.message.toString())
+                }
+            }
 
-        val placeFour = Place (
-                name = "Polresta Bandar Lampung",
-                description = "Kantor Polresta Provinsi Bandar Lampung melayani laporan & pengaduan masyarakat. Buka 07.00-14.30.",
-                image = R.drawable.parking_image_4,
-                capacity = 15,
-                available = 37,
-                streetAddress = "Jl. Mayjen MT Haryono",
-                address = "Jl. Mayjen MT Haryono, Gotong Royong, Kec. Tj. Karang Pusat, Kota Bandar Lampung, Lampung 35119",
-                url = "Something")
+            override fun onFailure(
+                    statusCode: Int,
+                    headers: Array<out Header>?,
+                    responseBody: ByteArray?,
+                    error: Throwable?
+            ) {
+                errorMessage = when (statusCode) {
+                    401 -> "$statusCode : Bad Request"
+                    403 -> "$statusCode : Forbidden"
+                    404 -> "$statusCode : Not Found"
+                    else -> "$statusCode : ${error?.message}"
+                }
 
-        listItems.add(placeOne)
-        listItems.add(placeFour)
-        listItems.add(placeTwo)
-        listItems.add(placeThree)
-
-        listPlaces.postValue(listItems)
+                Log.d(TAG, errorMessage)
+                GlobalScope.launch(Dispatchers.Main) {
+                    Toast.makeText(context, errorMessage, Toast.LENGTH_LONG).show()
+                }
+            }
+        })
     }
 
     fun getPlaces(): LiveData<ArrayList<Place>> {

@@ -39,7 +39,7 @@ class HomeFragment : Fragment() {
         setActionBar()
         showRecyclerView()
         homeViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(HomeViewModel::class.java)
-        homeViewModel.setPlace()
+        context?.let { homeViewModel.setPlace(it) }
         homeViewModel.getPlaces().observe(viewLifecycleOwner, { placeItems ->
             adapter.setData(placeItems)
         })
