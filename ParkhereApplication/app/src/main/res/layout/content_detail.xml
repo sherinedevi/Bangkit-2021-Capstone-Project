@@ -135,11 +135,13 @@
 
         <TextView
             style="@style/TextView.Sub.Title"
+            android:drawablePadding="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:text="@string/description"
-            app:drawableLeftCompat="@drawable/ic_baseline_bookmark_24" />
+            app:drawableLeftCompat="@drawable/ic_baseline_bookmark_24"
+            app:drawableTint="@color/orange_primary" />
 
         <ProgressBar
             android:id="@+id/progress_tv_description"
@@ -160,11 +162,13 @@
 
         <TextView
             style="@style/TextView.Sub.Title"
+            android:drawablePadding="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:text="@string/address"
-            app:drawableLeftCompat="@drawable/ic_baseline_location_on_24" />
+            app:drawableLeftCompat="@drawable/ic_baseline_location_on_24"
+            app:drawableTint="@color/orange_primary" />
 
         <ProgressBar
             android:id="@+id/progress_tv_address"
@@ -184,17 +188,23 @@
             tools:text="@string/example_address" />
 
         <TextView
+            android:id="@+id/tv_refresh_image"
             style="@style/TextView.Sub.Title"
-            android:layout_width="match_parent"
+            android:drawablePadding="5dp"
+            android:textStyle="bold"
+            android:textColor="@color/teal_700"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
+            android:gravity="center"
+            android:layout_gravity="center"
             android:text="@string/click_to_refresh_image"
-            app:drawableLeftCompat="@drawable/ic_baseline_flip_camera_ios_24" />
+            app:drawableLeftCompat="@drawable/ic_baseline_flip_camera_ios_24"
+            app:drawableTint="@color/orange_primary" />
 
         <ProgressBar
             android:id="@+id/progress_iv_cctv"
             android:layout_width="match_parent"
-            android:layout_height="100dp" />
+            android:layout_height="50dp" />
 
         <ImageView
             android:id="@+id/iv_cctv"

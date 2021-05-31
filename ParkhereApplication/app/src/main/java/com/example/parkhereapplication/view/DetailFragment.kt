@@ -18,6 +18,8 @@ class DetailFragment : Fragment() {
     private lateinit var detailViewModel: DetailViewModel
     private lateinit var place: Place
 
+    private var refrestState: Boolean = false
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -39,6 +41,7 @@ class DetailFragment : Fragment() {
             if (placeDetail != null) {
                 showLoading(false)
                 showData(placeDetail)
+                refrestState = false
             }
         })
     }
@@ -55,9 +58,11 @@ class DetailFragment : Fragment() {
     }
 
     private fun showData(placeDetail: PlaceDetail) {
-        Glide.with(this@DetailFragment)
-            .load(place.thumbnail)
-            .into(binding.ivPlace)
+        if (!refrestState) {
+            Glide.with(this@DetailFragment)
+                    .load(place.thumbnail)
+                    .into(binding.ivPlace)
+        }
         binding.layoutContent.tvName.text = place.name
         binding.layoutContent.tvStreet.text = place.street
         binding.layoutContent.tvAvailablility.text = placeDetail.available.toString()
@@ -66,6 +71,17 @@ class DetailFragment : Fragment() {
         Glide.with(this@DetailFragment)
                 .load(placeDetail.imageParkingLot)
                 .into(binding.layoutContent.ivCctv)
+
+        binding.layoutContent.tvRefreshImage.setOnClickListener {
+            refrestState = true
+            Glide.with(this@DetailFragment)
+                    .clear(binding.layoutContent.ivCctv)
+            binding.layoutContent.tvAvailablility.text = null
+
+            binding.layoutContent.progressIvCctv.visibility = View.VISIBLE
+            binding.layoutContent.progressTvAvailability.visibility = View.VISIBLE
+            detailViewModel.setPlaceDetail(place.detailUrl!!, requireContext())
+        }
     }
 
     private fun showLoading(condition: Boolean) {
