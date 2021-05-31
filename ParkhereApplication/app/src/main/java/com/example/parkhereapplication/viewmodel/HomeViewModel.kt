@@ -1,14 +1,13 @@
 package com.example.parkhereapplication.viewmodel
 
 import android.content.Context
+import android.util.Base64
 import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.parkhereapplication.R
 import com.example.parkhereapplication.model.Place
-import com.google.gson.Gson
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
 import cz.msebera.android.httpclient.Header
@@ -47,7 +46,7 @@ class HomeViewModel : ViewModel() {
                         val detailUrl = item.getString("detail_url")
                         val name = item.getString("name")
                         val street = item.getString("street")
-                        val thumbnail = item.getString("thumbnail_base64")
+                        val thumbnail = Base64.decode(item.getString("thumbnail_base64"), Base64.DEFAULT)
 
                         val place = Place(detailUrl, name, street, thumbnail)
                         listItems.add(place)

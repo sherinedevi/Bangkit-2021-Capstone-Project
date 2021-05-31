@@ -5,5 +5,5 @@ data class PlaceDetail(
     val available: Int?,
     val capacity: Int?,
     val description: String?,
-    val imageParkingLot: String?
+    val imageParkingLot: ByteArray?
 )

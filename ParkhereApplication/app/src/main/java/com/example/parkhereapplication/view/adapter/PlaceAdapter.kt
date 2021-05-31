@@ -43,7 +43,7 @@ class PlaceAdapter : RecyclerView.Adapter<PlaceAdapter.PlaceViewHolder>(){
         fun bind(place: Place) {
             with(itemView) {
                 Glide.with(itemView.context)
-                    .load(Base64.decode(place.thumbnail, Base64.DEFAULT))
+                    .load(place.thumbnail)
                     .into(binding.ivPlace)
                 binding.tvName.text = place.name
                 binding.tvStreet.text = place.street

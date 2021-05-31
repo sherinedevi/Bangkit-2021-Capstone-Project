@@ -14,6 +14,7 @@ import com.example.parkhereapplication.databinding.FragmentHomeBinding
 import com.example.parkhereapplication.model.Place
 import com.example.parkhereapplication.view.adapter.PlaceAdapter
 import com.example.parkhereapplication.viewmodel.HomeViewModel
+import java.util.ArrayList
 
 class HomeFragment : Fragment() {
     companion object {
@@ -38,10 +39,15 @@ class HomeFragment : Fragment() {
 
         setActionBar()
         showRecyclerView()
+        showLoading(true)
         homeViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(HomeViewModel::class.java)
         context?.let { homeViewModel.setPlace(it) }
         homeViewModel.getPlaces().observe(viewLifecycleOwner, { placeItems ->
-            adapter.setData(placeItems)
+            if (placeItems != null) {
+                showLoading(false)
+                showList(placeItems)
+                adapter.setData(placeItems)
+            }
         })
     }
 
@@ -68,4 +74,13 @@ class HomeFragment : Fragment() {
             }
         })
     }
+
+    private fun showList(placeItems: ArrayList<Place>) {
+        adapter.setData(placeItems)
+    }
+
+    private fun showLoading(condition: Boolean) {
+        binding.progressList.visibility = if (condition) View.VISIBLE else View.GONE
+    }
+
 }

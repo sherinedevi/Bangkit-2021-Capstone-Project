@@ -1,6 +1,7 @@
 package com.example.parkhereapplication.viewmodel
 
 import android.content.Context
+import android.util.Base64
 import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.LiveData
@@ -40,7 +41,7 @@ class DetailViewModel : ViewModel() {
                     val available = data.getInt("available")
                     val capacity = data.getInt("capacity")
                     val description = data.getString("description")
-                    val imageParkingLot = data.getString("image_parkinglot")
+                    val imageParkingLot = Base64.decode(data.getString("image_parkinglot"), Base64.DEFAULT)
 
                     val placeData = PlaceDetail(address, available, capacity, description, imageParkingLot)
                     placeDetail.postValue(placeData)

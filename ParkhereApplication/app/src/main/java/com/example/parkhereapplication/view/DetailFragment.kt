@@ -30,12 +30,16 @@ class DetailFragment : Fragment() {
 
         setActionBar()
         setHasOptionsMenu(true)
+        showLoading(true)
 
         place = arguments?.getParcelable<Place>(HomeFragment.EXTRA_PLACE) as Place
         detailViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(DetailViewModel::class.java)
         detailViewModel.setPlaceDetail(place.detailUrl!!, requireContext())
         detailViewModel.getPlaceDetail().observe(viewLifecycleOwner, { placeDetail ->
-            setData(placeDetail)
+            if (placeDetail != null) {
+                showLoading(false)
+                showData(placeDetail)
+            }
         })
     }
 
@@ -50,14 +54,41 @@ class DetailFragment : Fragment() {
         (activity as AppCompatActivity?)?.supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
-    private fun setData(placeDetail: PlaceDetail) {
+    private fun showData(placeDetail: PlaceDetail) {
         Glide.with(this@DetailFragment)
-            .load(Base64.decode(place.thumbnail, Base64.DEFAULT))
+            .load(place.thumbnail)
             .into(binding.ivPlace)
         binding.layoutContent.tvName.text = place.name
         binding.layoutContent.tvStreet.text = place.street
         binding.layoutContent.tvAvailablility.text = placeDetail.available.toString()
         binding.layoutContent.tvDescription.text = placeDetail.description
         binding.layoutContent.tvAddress.text = placeDetail.address
+        Glide.with(this@DetailFragment)
+                .load(placeDetail.imageParkingLot)
+                .into(binding.layoutContent.ivCctv)
+    }
+
+    private fun showLoading(condition: Boolean) {
+        if (condition) {
+            View.VISIBLE.let {
+                binding.progressHeadlineImage.visibility = it
+                binding.layoutContent.progressTvName.visibility = it
+                binding.layoutContent.progressTvStreet.visibility = it
+                binding.layoutContent.progressTvAvailability.visibility = it
+                binding.layoutContent.progressTvDescription.visibility = it
+                binding.layoutContent.progressTvAddress.visibility = it
+                binding.layoutContent.progressIvCctv.visibility = it
+            }
+        } else {
+            View.GONE.let {
+                binding.progressHeadlineImage.visibility = it
+                binding.layoutContent.progressTvName.visibility = it
+                binding.layoutContent.progressTvStreet.visibility = it
+                binding.layoutContent.progressTvAvailability.visibility = it
+                binding.layoutContent.progressTvDescription.visibility = it
+                binding.layoutContent.progressTvAddress.visibility = it
+                binding.layoutContent.progressIvCctv.visibility = it
+            }
+        }
     }
 }

@@ -6,6 +6,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ProgressBar
+        android:id="@+id/progress_tv_name"
+        android:layout_width="match_parent"
+        android:layout_height="20sp"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:indeterminate="true"
+        android:indeterminateBehavior="cycle"
+        android:indeterminateDuration="700"
+        app:layout_constraintTop_toTopOf="@id/tv_name"
+        app:layout_constraintLeft_toLeftOf="@id/tv_name" />
+
     <TextView
         android:id="@+id/tv_name"
         style="@style/TextView.Heading"
@@ -14,7 +25,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:text="@string/name_example" />
+        tools:text="@string/name_example" />
+
+    <ProgressBar
+        android:id="@+id/progress_tv_street"
+        android:layout_width="150dp"
+        android:layout_height="20sp"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:indeterminate="true"
+        android:indeterminateBehavior="cycle"
+        android:indeterminateDuration="700"
+        app:layout_constraintTop_toTopOf="@id/tv_street"
+        app:layout_constraintLeft_toLeftOf="@id/tv_street" />
 
     <TextView
         android:id="@+id/tv_street"
@@ -23,7 +45,7 @@
         style="@style/TextView.Sub"
         app:layout_constraintTop_toBottomOf="@id/tv_name"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:text="@string/example_street" />
+        tools:text="@string/example_street" />
 
     <TextView
         android:id="@+id/tv_sub_title"
@@ -68,8 +90,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    app:tint="@color/orange_primary"
-                    android:src="@drawable/ic_baseline_local_parking_24" />
+                    android:src="@drawable/ic_baseline_local_parking_24"
+                    app:tint="@color/orange_primary" />
 
                 <TextView
                     android:id="@+id/tv_availablility"
@@ -78,11 +100,27 @@
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="@string/example_parking_availability"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="@string/example_parking_availability" />
 
             </LinearLayout>
+
+            <ProgressBar
+                android:id="@+id/progress_tv_availability"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="@id/guideline"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_end="90dp" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
@@ -103,13 +141,22 @@
             android:text="@string/description"
             app:drawableLeftCompat="@drawable/ic_baseline_bookmark_24" />
 
+        <ProgressBar
+            android:id="@+id/progress_tv_description"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:indeterminate="true"
+            android:indeterminateBehavior="cycle"
+            android:indeterminateDuration="700" />
+
         <TextView
             android:id="@+id/tv_description"
             style="@style/TextView.Sub.Content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="25dp"
-            android:text="@string/description_example" />
+            tools:text="@string/description_example" />
 
         <TextView
             style="@style/TextView.Sub.Title"
@@ -119,13 +166,22 @@
             android:text="@string/address"
             app:drawableLeftCompat="@drawable/ic_baseline_location_on_24" />
 
+        <ProgressBar
+            android:id="@+id/progress_tv_address"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:indeterminate="true"
+            android:indeterminateBehavior="cycle"
+            android:indeterminateDuration="700" />
+
         <TextView
             android:id="@+id/tv_address"
             style="@style/TextView.Sub.Content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="25dp"
-            android:text="@string/example_address" />
+            tools:text="@string/example_address" />
 
         <TextView
             style="@style/TextView.Sub.Title"
@@ -135,7 +191,13 @@
             android:text="@string/click_to_refresh_image"
             app:drawableLeftCompat="@drawable/ic_baseline_flip_camera_ios_24" />
 
+        <ProgressBar
+            android:id="@+id/progress_iv_cctv"
+            android:layout_width="match_parent"
+            android:layout_height="100dp" />
+
         <ImageView
+            android:id="@+id/iv_cctv"
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:src="@drawable/cctv_image"
