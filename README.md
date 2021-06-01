@@ -12,4 +12,4 @@ Our team has successfully built this application based on our planned execution.
 
 ## App Demo
 
-![Parkhere Application](./Media/Demo%20Screen.gif)
+<img src="./Media/Demo%20Screen.gif" width="60%"/>
