@@ -12,4 +12,4 @@ Our team has successfully built this application based on our planned execution.
 
 ## App Demo
 
-<img src="./Media/Demo%20Screen.gif" width="60%"/>
+<img src="./Media/Demo%20Screen.gif" width="40%"/>
