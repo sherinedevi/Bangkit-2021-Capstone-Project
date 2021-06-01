@@ -18,4 +18,4 @@ Our team has successfully built this application based on our planned execution.
 1. Open terminal and enter `git clone https://github.com/sherinedevi/Bangkit-2021-Capstone-Project.git`
 2. Start Android Studio
 3. Open the project within `../ParkhereApplication/` folder
-4. Run the project with Android Studio
+4. Run the project with Android Studio using either the emulator or physical device
