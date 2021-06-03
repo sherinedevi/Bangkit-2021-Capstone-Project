@@ -2,3 +2,8 @@ runtime: python37
 instance_class: F4_1G
 automatic_scaling:
   max_instances: 5
+libraries:
+- name: grpcio
+  version: 1.0.0
+- name: ssl
+  version: latest
