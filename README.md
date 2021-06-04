@@ -13,7 +13,7 @@ Our team has successfully built this application based on our planned execution.
 ## App Demo
 
 <img src="./Media/Demo%20Screen.gif" width="40%"/>
-The APK file can be downloaded [here](https://drive.google.com/file/d/1AZEaLu7Ury1URlBxt7eOh95NMZbxHzUX/view?usp=sharing)
+The APK file can be downloaded here: https://drive.google.com/file/d/1AZEaLu7Ury1URlBxt7eOh95NMZbxHzUX/view?usp=sharing
 
 ## Running on Local
 1. Open terminal and enter `git clone https://github.com/sherinedevi/Bangkit-2021-Capstone-Project.git`
